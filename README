@@ -1,0 +1,66 @@
+	*****************************************
+        *               README                  *
+        *                                       *
+        *       Nume proiect: Tema 1 PP         *
+        *       Autor: Diana Cretu              *
+        *       Grupa: 322 CC                   *
+        *       Deadline: Joi, 05.04.2018     ``*
+        *                                       *
+        *                                       *
+        *****************************************
+
+1. Ierarhia proiectului
+
+	Codul sursa este structurat in fisierele:
+		->mini_database.rkt
+
+
+2. Descrierea aplicatiei
+
+	Programul scris in Racket construieste o baza de date.
+
+
+3. Implementare
+
+	Baza de date este gandita ca o lista de tabele, tabelul
+fiind o lista de liste, primul element este reprezentat de lista cu numele
+coloanelor, apoi lista cu randurile, ce sunt tot o lista de inregistrari.
+	La cerinta 1, am realizat functiile elementare pe tabel.
+	Pentru cerinta a 2 a am realizat insertul folosind map pentru a itera
+prin baza de date si a schimba tabelul care este dat prin parametru. Functia
+ajutatoare create-row creeaza randul ce trebuie inserat la finalul tabelului,
+folosind foldl pentru a trece prin fiecare coloana din get-columns si a adauga
+elementul verificand cu assoc daca numele coloanei se afla in record. Daca se 
+afla, al doilea element al perechii este adaugat la lista.
+	Pentru cerinta a 3 a, simple-select folosim foldl pentru a trece prin 
+fiecare coloana din columns, iar pentru fiecare coloana in parte apelam functia 
+column-list ce trece prin fiecare rand al tabelului si adauga la lista elemntul 
+de pe pozitia coloanei.
+	Pentu select trecem prin fiecare coloana din columns si verificam daca
+elementul este pereche sau nu. Daca este pereche, apelam functia inregistrari
+pentru perechea respectiva ce la randul ei apeleaza functia columns-list. 
+Columns-list creeaza o lista cu elementele dintr-o anumita coloana data ca
+parametru, adaugand la lista respectiva doar elementele ce respecta conditiile
+din conditions. Daca nu este pereche, este apelata direct columns-list.
+	Pentru update, folosim map pentru a parcurge baza de date, iar in
+in momentul in care am gasit tabelul cautat, apelam pentru acesta functia
+change ce creeaza o lista, pastrand titlul tabelului si numele coloanelor,
+iar atunci cand parcurge randurile, daca este gasit un rand ce respecta 
+conditiile din conditions, se apeleaza functia chg ce schimba valorile din tabel
+cu cele mentionate in values.
+	Pentru delete, parcurgem baza de date, iar in momentul in care gasim
+tabelul il cream din nou pastrand titlul, numele coloanelor, iar randurile ce
+respecta condtiile din conditions nu mai sunt adaugate la noul tabel.
+
+	
+
+	*****************************************
+        *               END README              *
+        *                                       *
+        *       Nume proiect: Tema 1 PP         *
+        *       Autor: Diana Cretu      	*
+        *       Grupa: 322 CC                   *
+        *       Deadline: Luni, 05.04.2018	*
+        *                                       *
+        *                                       *
+        *****************************************	
